@@ -1,0 +1,109 @@
+/* DoctorCard.css */
+
+.doctor-container{
+   padding: 10px;
+}
+
+
+.Showdoctor-list{
+    display: flex;
+}
+
+.Showdoctor-card {
+    width: 20%;
+    max-width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Showdoctor-card:hover {
+		transform: scale(1.02);
+	}
+
+
+.Showdoctor-card p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+p {
+    margin: 0;
+}
+
+button {
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+
+/* Add the form section styles */
+
+.form-sections {
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 8px;
+padding: 16px;
+width: 45%;
+margin-bottom: 306px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+
+
+    input {
+        padding: 8px;
+        margin-bottom: 16px;
+    }
+
+    button {
+        align-self: flex-start;
+        padding: 8px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+
+
+
+button {
+margin-top: 8px;
+cursor: pointer;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 4px;
+padding: 8px;
+cursor: pointer;
+
+&:hover {
+    background-color: #0056b3;
+}
+}
+
+.btn-container {
+display: flex;
+justify-content: space-between;
+width: 100%;
+}

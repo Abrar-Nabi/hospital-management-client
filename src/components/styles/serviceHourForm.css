@@ -1,0 +1,109 @@
+  
+
+
+  
+.service-hours-form {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 50px 30px;
+
+  }
+  
+  .service-hours {
+	flex-basis: 45%;
+	padding: 10px;
+    border-radius: 30px;
+    background: #f9f9ff;
+
+  }
+
+  .book-appointment  {
+	flex-basis: 45%;
+    padding: 10px;
+    background: #fff;
+
+  }
+  
+  .service-hours h2,
+  .book-appointment h2 {
+	margin-bottom: 20px;
+  text-align: center;
+  }
+ 
+
+.service-hours ul {
+    list-style-type: none;
+    padding: 0;
+    flex-direction: column;
+  }
+  
+  .service-hours li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    font-weight: 400;
+    color: #222222;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+  
+  .service-hours li span {
+    flex-basis: 50%;
+  }
+  
+  .service-hours li span:last-child {
+    text-align: right;
+  }
+  
+  .service-hours li span.closed {
+    color: red;
+  }
+  
+  
+  .book-appointment form {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .book-appointment label {
+   font-size: 15px;
+    }
+  
+  .book-appointment input,
+  .book-appointment button {
+	margin-bottom: 15px;
+	padding: 10px;
+  border: 1px solid ;
+	border-radius: 5px;
+  }
+  
+  .book-appointment button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .book-appointment button:hover {
+	background-color: #0056b3;
+  }
+
+
+
+  @media (max-width: 1024px) {
+
+    
+  }
+  @media (max-width: 768px) {
+
+    .service-hours-form {
+        flex-direction: column;
+    }
+  }
+  @media (max-width: 484px) {
+
+    
+  }
