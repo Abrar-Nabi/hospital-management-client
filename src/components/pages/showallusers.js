@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserCard from './usercard';
+import UserCard from '../cards/usercard';
  // Assuming you have a UserCard component for displaying user details
 import Navbar from '../Navbar';
 import Footer from '../footer'; // Assuming it's 'Footer', not 'footer'
@@ -14,7 +14,7 @@ const Users = () => {
 
     const refreshUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/showallusers');
+            const response = await axios.get('http://localhost:5000/allusers');
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching users:', error);

@@ -1,20 +1,26 @@
 /* /src/components/Doctors.css */
+.doctorsMain {
+	display: flex;
+}
 
-.main-doc-container {
+.doctor-container h1 {
+	text-align: center;
+}
+
+.doctors-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.doctor-list {
+	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-}
-.doctor-container h1{
-	text-align: center;
-}
-.doctors-section {
-	width: 45%;
-	height: 100vh;
-	text-align: center;
-	margin-left: 16px;
-	/* Added margin for spacing */
+	justify-content: start;
+	
+
 }
 
 /* Add the doctor card styles */
@@ -23,34 +29,43 @@
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	padding: 16px;
-	margin-bottom: 16px;
+	margin: 16px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease-in-out;
+	max-width: 300px;
 
 	&:hover {
 		transform: scale(1.02);
 	}
 
 	p {
-		margin: 0;
+		font-size: 16px;
+		margin-bottom: 10px;
 	}
 
 	button {
 		margin-top: 8px;
 		cursor: pointer;
 	}
+
+	p {
+		span {
+			font-weight: 600;
+		}
+	}
 }
 
 /* Add the form section styles */
 
-.form-sections {
-	background-color: #fff;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	padding: 16px;
-	width: 45%;
-	margin-bottom: 306px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.doctor-form-sections {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 20px;
+	
+
+
+
 
 	h4 {
 		margin-bottom: 16px;
@@ -60,7 +75,18 @@
 	form {
 		display: flex;
 		flex-direction: column;
-
+		width: 50%;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		background-color: #fff;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 16px;
+		height: 500px;
+		margin-bottom: 300px;
+		position: fixed;
+		top: 20px;
+		left: 400px;
+		z-index: 999;
 		label {
 			margin-bottom: 8px;
 		}
@@ -70,7 +96,7 @@
 			margin-bottom: 16px;
 		}
 
-		button {
+		/* button {
 			align-self: flex-start;
 			padding: 8px;
 			background-color: #007bff;
@@ -82,11 +108,11 @@
 			&:hover {
 				background-color: #0056b3;
 			}
-		}
+		} */
 	}
 }
 
-button {
+/* button {
 	margin-top: 8px;
 	cursor: pointer;
 	background-color: #007bff;
@@ -99,22 +125,38 @@ button {
 	&:hover {
 		background-color: #0056b3;
 	}
-}
+} */
 
 .btn-container {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 }
+
 @media (max-width: 768px) {
-    .Showdoctor-list{
+	.Showdoctor-list {
 		justify-content: center;
 		flex-wrap: wrap;
 	}
+	.doctor-form-sections {
+	form {
+		
+		width: 400px;
+
+		position: fixed;
+		left: 100px;
+	}
+}
 }
 
 
 
-@media (max-width: 484px) {
-    
-}
+@media (max-width: 584px) {.doctor-form-sections {
+	form {
+		
+		width: 200px;
+
+		position: fixed;
+		left: 100px;
+	}
+}}

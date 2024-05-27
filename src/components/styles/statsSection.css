@@ -1,0 +1,57 @@
+/* StatsCard.module.css */
+.stats-card-list {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: end;
+  /* height: 40vh; */
+  flex-wrap: wrap;
+}
+
+.stats-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+    height: 130px;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	  transition: transform 0.3s ease-in-out;
+
+	&:hover {
+		transform: scale(1.02);
+	}
+}
+  .stats-title {
+    font-size: 20px;
+    font-weight:normal;
+    color: #000000;
+    margin: 0px;
+}
+  
+  .stats-value {
+    font-size: 30px;
+    color: #000000;
+    font-weight: bold;
+    margin: 0px;
+  }
+
+  .stats-icon {
+    margin: 10px 20px 10px 10px;
+    font-size: 40px;
+}
+  
+
+@media only screen and (max-width: 550px) {
+  
+.stats-card {
+  
+  width: 250px;
+ 
+}
+  
+}
+

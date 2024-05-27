@@ -26,7 +26,7 @@ const Doctor = () => {
             <Navbar />
             <div className="doctor-container">
                 <h1>Doctors</h1>
-                <div className="Showdoctor-list">
+                <div className="doctor-list">
                     {doctors.map(doctor => (
                         <ShowDoctorCard key={doctor._id} doctor={doctor} />
                     ))}

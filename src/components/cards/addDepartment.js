@@ -94,9 +94,8 @@ const DepartmentsPage = () => {
 
   return (
     <div className="departments-page">
-      <Sidebar />
-      <ToastContainer />
-      {isEditMode || addFormVisible ? (
+   
+      { addFormVisible ? (
         <div className='department-form'>
           <form onSubmit={isEditMode ? (e) => handleUpdateDepartment(selectedDepartment._id, e) : handleAddDepartment}>
             <h4>{isEditMode ? 'Edit Department' : 'Add New Department'}</h4>
@@ -109,18 +108,9 @@ const DepartmentsPage = () => {
           </form>
         </div>
       ) : (
-        <div className="departments-container">
-          <div className='adminHeader'>
-            <h3>Departments</h3>
-            <div className='btncontainer'>
-              <button onClick={showAddForm} type="button">Add Department</button>
-            </div>
-          </div>
-          {departments.map(department => (
-            <DepartmentCard key={department._id} department={department} onEdit={handleEditDepartment} onDelete={() => handleDeleteDepartment(department._id)} />
-          ))}
-        </div>
+        null
       )}
+      <button className="quick-link-button"  onClick={showAddForm} type="submit">Add Department</button>
     </div>
   );
 };

@@ -1,15 +1,26 @@
+import React from 'react';
 
 
-import React from "react";
+import Footer from '../footer';
+import '../styles/adminHome.css'; // Your custom styles for the admin dashboard
 
-import "../styles/Navbar.css";
-import Navbar from "../Navbar";
+import Sidebar from './sidebar';
+import Dashboard from '../pages/dashboard';
+import QuickLinksCard from '../cards/quickLinksCard'
 
-const AdminHome = () => {
+const AdminDashboard = () => {
+  return (
+    <div className='AdminHome'>
+      <div className="admin-dashboard">
+        <Sidebar />
+        <div className='adminMain'>
+          <QuickLinksCard />
+          <Dashboard />
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
-    return(
-        <Navbar/>
-    );
-}
-
-export default AdminHome;
+export default AdminDashboard;

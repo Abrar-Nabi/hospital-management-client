@@ -1,0 +1,72 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .Sign-card {
+    width: 300px;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Sign-card  h2 {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .Sign-card  {
+    margin-bottom: 15px;
+  }
+  
+  .Sign-card  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .Sign-card  input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .Sign-card button {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #38cc03 !important;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .signup-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    margin-top: 10px;
+    color: red;
+  }
+  
+  .login-link{
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+
+  .login-link a:hover {
+    color: #003d7d;
+    text-decoration: underline;
+  }
+  

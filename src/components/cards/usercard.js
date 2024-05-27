@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const UserCard = ({ user, onEdit, onDelete }) => {
+const UserCard = ({ user }) => {
   return (
     <div className="user-card">
       <p>
@@ -10,10 +10,7 @@ const UserCard = ({ user, onEdit, onDelete }) => {
       <p>
         <span>Username:</span> {user.username}
       </p>
-      <p>
-        <span>Password:</span> {user.password} {/* Just for illustration, should not display actual passwords */}
-      </p>
-  
+    
     </div>
   );
 };

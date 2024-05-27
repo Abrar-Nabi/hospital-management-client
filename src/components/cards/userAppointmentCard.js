@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../styles/AppointmentCard.css'; 
-const AppointmentCard = ({ appointment, onEdit, onDelete }) => {
-  const [isAdmin, setisAdmin] = useState(false);
-  useEffect(() => {
-    const admin = localStorage.getItem('userType');
-    if (admin === 'Admin') {
-      setisAdmin(true);
-    }
-    }, []);
+const AppointmentCard = ({ appointment, onDelete }) => {
+  
   return (
     <div className="appointment-card">
       <p>
@@ -34,11 +28,7 @@ const AppointmentCard = ({ appointment, onEdit, onDelete }) => {
       <p>
         <span>Booking Status:</span> {appointment.bookingStatus}
       </p>
-      {isAdmin ? (
-      <div className='btn-container'>
-        <button onClick={() => onEdit(appointment)}>Edit</button>
-        <button onClick={() => onDelete(appointment._id)}>Delete</button>
-      </div>) : null}
+      <button onClick={() => onDelete(appointment._id)}>Delete</button>
     </div>
   );
 };

@@ -1,0 +1,88 @@
+/* DoctorsSection.module.css */
+.doc-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+  background-color: #6babce17;
+}
+  
+.doctors-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    /* border: 1px solid; */
+    height: 400px;
+}
+  .section-headline {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .section-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666666c2;
+}
+  
+.learn-more-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+}
+  .doctors-image {
+    background-image: url(../assets/images/doctorsSection.jpg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 400px;
+}
+
+
+@media (max-width: 1024px) {
+
+.doctors-content {
+
+  margin: 10px;
+}
+}
+
+@media (max-width: 768px) {
+  .section-headline {
+    font-size: 35px;
+    font-weight: bold;
+    /* margin-bottom: 10px; */
+    margin: 50px 0px 0px;
+}
+.doctors-content {
+
+  margin: 10px;
+}
+}
+
+@media (max-width: 600px) {
+  
+  .doc-section {
+
+    flex-direction: column;
+}
+
+
+.doctors-image {
+  margin: 10px 0px;
+  width: 100%;
+  display: none;
+}
+
+.doctors-content {
+ width: 90%;
+}
+}

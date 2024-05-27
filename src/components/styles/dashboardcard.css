@@ -1,0 +1,50 @@
+.adminpatients-section {
+    display: flex;
+    /* margin: 50px; */
+    justify-content: center;
+    width: 100%;
+   
+}
+
+
+
+.adminpatient-card{
+    width: 250px;
+    height: 150px;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 16px;
+	margin: 10px;
+	margin-bottom: 16px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease-in-out;
+
+	&:hover {
+		transform: scale(1.02);
+	}
+
+	h4 {
+		font-size: 20px;
+		margin-bottom: 4px;
+	}
+
+	p {
+		font-size: 50px;
+		margin: 4px 0;
+	}
+	i {
+		font-size: 25px;
+	}
+}
+
+
+
+@media (max-width: 344px) {
+	
+.adminpatient-card{
+	width: 200px;
+}
+}	

@@ -11,12 +11,24 @@
 }
 
 .service-column {
-    max-width: 20%;
+    max-width: 25%;
     padding: 20px;
     margin: 10px;
-    box-shadow: 0 0 10px rgb(0 0 0 / 38%);
+    /* box-shadow: 0 0 10px rgb(0 0 0 / 38%); */
     transition: box-shadow 0.3s ease;
+    border: 1px solid #a5a5a5;
+    border-radius: 10px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease-in-out;
 
+	&:hover {
+		transform: scale(1.02);
+	}
 }
 
 .service-column img {
@@ -26,17 +38,19 @@
 }
 
 .service-column h3 {
-    margin-bottom: 10px;
+    margin: 0px;
 }
 
 .service-column p {
     font-size: 14px;
     line-height: 1.5;
+    width: 70%;
 }
-i {
+
+.serviceIcon{
     font-size: 40px;
-    /* color: #24a7f4eb; */
 }
+
 @media (max-width: 1024px) {}
 
 
@@ -52,12 +66,15 @@ i {
         box-shadow: 0 0 10px rgb(0 0 0 / 38%);
         transition: box-shadow 0.3s ease;
     }
+    .service-column p{
+        width: 100%;
+    }
 
 }
 
 
 
-@media (max-width: 484px) {
+@media (max-width: 550px) {
     .service-column {
         max-width: 50%;
        

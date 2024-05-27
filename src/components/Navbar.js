@@ -1,56 +1,60 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
+// import logo from "./assets/images/logo.png";
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [toggle, setToggle] = useState(false);
-  // const [email, setEmail] = useState('');
-  const [Username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("loggedIn");
     if (loggedInStatus) {
       setLoggedIn(true);
-      // const loggedInEmail = localStorage.getItem('userEmail');
-      // setEmail(loggedInEmail || ''); // Set the logged-in email or an empty string if not found
       const loggedInUsername = localStorage.getItem("username");
-      setUsername(loggedInUsername || "Na"); // Set the logged-in email or an empty string if not found
+      setUsername(loggedInUsername || "Na");
     }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("userEmail");
-    setLoggedIn(false);
-    // setEmail('');
-    window.location.href = "/";
+    setLoading(true); // Set loading to true when logout button is clicked
+    setTimeout(() => {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("userEmail");
+      localStorage.removeItem("username");
+      localStorage.removeItem("token");
+      localStorage.removeItem("userType");
+      setLoggedIn(false);
+      setLoading(false); // Set loading to false after the delay
+      window.location.href = "/";
+    }, 500); // 3 seconds delay
   };
 
-  function handleToggle() {
+  const handleToggle = () => {
     setToggle(!toggle);
     console.log(toggle);
-  }
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="logo">
-          <Link to="/">
-          <i class="ri-hospital-fill"></i>
+        <Link to="/">
+          {/* <img src={logo} alt="Logo" /> */}
+          <div className="logo"></div>
+        </Link>
 
-          </Link>
-        </div>
         <div className={toggle ? `nav-links-mobile` : `nav-links`}>
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/DepartmentsPage">Departments</Link>
+              <Link to="/Departments">Departments</Link>
             </li>
             <li>
-              <Link to="/ShowDoctor">Doctors</Link>
+              <Link to="/Doctor">Doctors</Link>
             </li>
 
             {loggedIn ? (
@@ -59,12 +63,12 @@ const Navbar = () => {
                   <Link to="/ShowAppointment">My appointments</Link>
                 </li>
                 <li>
-                  <span>Welcome, {Username}!</span>
+                  <span>Welcome, {username}!</span>
                 </li>
                 <li>
                   <button onClick={handleLogout}>Logout</button>
                 </li>
-                {toggle && <i class="ri-close-line" onClick={handleToggle}></i>}
+                {toggle && <i className="ri-close-line" onClick={handleToggle}></i>}
               </>
             ) : (
               <>
@@ -78,8 +82,11 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        {toggle || <i class="ri-menu-line" onClick={handleToggle}></i>}
+        {toggle || <i className="ri-menu-line" onClick={handleToggle}></i>}
       </div>
+      {loading && (
+        <div className="loading-screen">Logging out...</div> // Conditionally render loading screen
+      )}
     </nav>
   );
 };

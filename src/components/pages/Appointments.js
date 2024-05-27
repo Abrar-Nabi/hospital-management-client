@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AppointmentCard from '../cards/AppointmentCard';
-import Navbar from '../Navbar';
-import '../styles/Appointment.css';
 
+import '../styles/Appointment.css';
+import Sidebar from '../pages/sidebar';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -15,11 +16,33 @@ const Appointments = () => {
     email: '',
     dob: '',
     diseaseType: '',
-    bookingStatus: '', 
+    bookingStatus: 'pending',
   });
   const [isEditMode, setIsEditMode] = useState(false);
-
+  const [addform, setAddform] = useState(false);
+  const [doctors, setDoctors] = useState([]); 
+  const [departments, setDepartments] = useState([]);
   useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+          const response = await axios.get('http://localhost:5000/doctors');
+          setDoctors(response.data);
+      } catch (error) {
+          console.error('Error fetching doctors:', error);
+      }
+      
+  };
+  const fetchDepartments = async () => {
+    try {
+        const response = await axios.get('http://localhost:5000/departments');
+        setDepartments(response.data);
+    } catch (error) {
+        console.error('Error fetching departments:', error);
+    }
+};
+
+fetchDepartments();
+  fetchDoctors();
     refreshAppointments();
   }, []);
 
@@ -45,13 +68,16 @@ const Appointments = () => {
     try {
       if (isEditMode) {
         await axios.post(`http://localhost:5000/appointments/update/${newAppointment._id}`, newAppointment);
+        toast.info("Appointment updated Successfully",{autoClose: 2000,})
       } else {
         const response = await axios.post('http://localhost:5000/appointments/add', newAppointment);
         setAppointments([...appointments, response.data]);
+        toast.success("Appointment added Successfully",{autoClose: 2000,})
       }
-      setNewAppointment({ patientName: '', doctorName: '', date: '', phone: '', email: '', dob: '', diseaseType: '', bookingStatus: 'Pending' }); // Reset bookingStatus to default
+      setNewAppointment({ patientName: '', doctorName: '', date: '', phone: '', email: '', dob: '', diseaseType: '', bookingStatus: '' }); // Reset bookingStatus to default
       setIsEditMode(false);
-      refreshAppointments(); // Refresh appointments list after form submission
+      refreshAppointments(); 
+      setAddform(false);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -72,54 +98,81 @@ const Appointments = () => {
         console.log(response.data);
         setAppointments(appointments.filter(appointment => appointment._id !== id));
         refreshAppointments(); // Refresh appointments list after deletion
+        toast.error("Appointment deleted Successfully",{autoClose: 2000,})
       })
       .catch(error => console.error('Error deleting appointment:', error));
   };
 
-  const cancelbtn = () =>{
+  const cancelbtn = () => {
     setIsEditMode(false);
+    setAddform(false)
   };
+
+  const addbtn = () => {
+    setAddform(true)
+  }
   return (
-    <div>
-      <Navbar />
-      <div className='flex-row' style={{ width: "100%" }}>
-        <div className='appointments'>
-          <h3>Appointments ({appointments.length})</h3>
-          <div className="appointment-list">
-            {appointments.map(appointment => (
-              <AppointmentCard key={appointment._id} appointment={appointment} onEdit={handleEditAppointment} onDelete={handleDeleteAppointment} />
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className='patient-main'>
+    <ToastContainer/>
+      <Sidebar />
 
-        {isEditMode ? (
-          <div className='flex-column'>
-            <div className='add-form'>
-              <form className="appointment-form" onSubmit={handleFormSubmit}>
+
+
+      {isEditMode || addform ? (
+       
+          <div className='add-form'>
+            <form className="appointment-form" onSubmit={handleFormSubmit}>
               <h4>{isEditMode ? 'Edit Appointment' : 'Add New Appointment'}</h4>
-                <input type="hidden" name="_id" value={newAppointment._id || ''} />
-                <input disabled={true} type="text" name="patientName" placeholder="Patient Name" value={newAppointment.patientName} onChange={handleInputChange} required />
-                <input type="text" name="doctorName" placeholder="Doctor Name" value={newAppointment.doctorName} onChange={handleInputChange} required />
-                <input type="Appointment date" name="date" placeholder="Date" value={newAppointment.date} onChange={handleInputChange} required />
-                <input type="tel" name="phone" placeholder="Phone" value={newAppointment.phone} onChange={handleInputChange} required />
-                <input disabled={true}  type="email" name="email" placeholder="Email" value={newAppointment.email} onChange={handleInputChange} required />
-                <input disabled={true}  type="date" name="dob" placeholder="Date of Birth" value={newAppointment.dob} onChange={handleInputChange} required />
-                <input disabled={true}  type="text" name="diseaseType" placeholder="Disease Type" value={newAppointment.diseaseType} onChange={handleInputChange} required />
-                <select name="bookingStatus" value={newAppointment.bookingStatus} onChange={handleInputChange}>
-                  <option value="Pending">Pending</option>
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Confirmed">Confirmed</option>
-                </select>
-                <div className='editformBtns'>
-
+              <input type="hidden" name="_id" value={newAppointment._id || ''} />
+              <input type="text" name="patientName" placeholder="Patient Name" value={newAppointment.patientName} onChange={handleInputChange} required />
+              <select name="doctorName" value={newAppointment.doctorName} onChange={handleInputChange} className="doctor-dropdown" required>
+              <option value="">Select Doctor</option>
+              {doctors.map((doctor) => (
+                <option key={doctor._id} value={doctor.name}>
+                  {doctor.name} - {doctor.specialty}
+                </option>
+              ))}
+            </select>
+              <label>Appointment Date</label>
+              <input type="date" name="date" placeholder="Date" value={newAppointment.date} onChange={handleInputChange} required />
+              <input type="tel" name="phone" placeholder="Phone" value={newAppointment.phone} onChange={handleInputChange} required />
+              <input type="email" name="email" placeholder="Email" value={newAppointment.email} onChange={handleInputChange} required />
+              <label>Date of Birth</label>
+              <input type="date" name="dob" placeholder="Date of Birth" value={newAppointment.dob} onChange={handleInputChange} required />
+              <input type="text" name="diseaseType" placeholder="Disease Type" value={newAppointment.diseaseType} onChange={handleInputChange} required />
+              <select name="bookingStatus" onChange={handleInputChange}>
+                <option value="Pending">Pending</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Confirmed">Confirmed</option>
+              </select>
+              <div className='editformBtns'>
                 <button onClick={cancelbtn}>{'Cancel'}</button>
-                <button type="submit">{'Update Appointment'}</button>
-                </div>
-              </form>
+                <button type="submit">{isEditMode ? 'Update Appointment' : 'Add Appointment'}</button>
+              </div>
+            </form>
+          </div>
+      
+      ) : (
+        <div className=''>
+          <div className='appointments'>
+
+            <div className='adminHeader'>
+
+              <h3>Appointments </h3>
+              <div className='btncontainer'>
+                <button onClick={addbtn} type="submit">Add Appointment</button>
+              </div>
+            </div>
+            <div className="appointment-list">
+              {appointments.map(appointment => (
+                <AppointmentCard key={appointment.id} appointment={appointment} onEdit={handleEditAppointment} onDelete={handleDeleteAppointment} />
+              ))}
             </div>
           </div>
-        ) : null}
+        </div>
+
+      )}
+
     </div>
   );
 };

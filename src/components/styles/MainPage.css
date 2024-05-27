@@ -80,7 +80,7 @@
     align-items: center;
     max-width: 100%;
     padding: 0px 20px 50px;
-    background-image: url(http://localhost:3001/static/media/bg_1.6af4bb48e4aaf71ff4b7.jpg);
+    background-image: url(http://localhost:3000/static/media/bg_1.6af4bb48e4aaf71ff4b7.jpg);
     background-size: cover;
     background-position: bottom;
     height: 75vh;

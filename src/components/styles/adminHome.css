@@ -1,0 +1,29 @@
+.admin-dashboard{
+    display: flex;
+    
+ 
+}
+
+
+.adminMain {
+    display: flex;
+    /* height: 80vh; */
+    flex-direction: column;
+}
+
+
+@media (max-width: 1200px) {
+    .adminpatients-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+     
+    }
+
+
+    .adminMain {
+        margin: 60px 10px;
+    }
+    
+}

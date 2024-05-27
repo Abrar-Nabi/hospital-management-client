@@ -1,0 +1,45 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+  
+    margin: 10px;
+  
+  }
+  .quick-links-card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+ 
+}
+  
+  .quick-links {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+
+  
+  .quick-link-button {
+    border: 1px solid #ccc;
+    color: #000;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
+
+
+
+    &:hover{
+        transform: scale(1.05);
+        background-color: #cdcdcd;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+  
+  }
